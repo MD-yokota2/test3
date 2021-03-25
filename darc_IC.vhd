@@ -29,26 +29,26 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity darc_IC is
 	port (
-			clkW_h		: In  	std_logic;
-			clkR_16		: In 	std_logic;
-         		clr		: In 	std_logic;
-         		ceS		: In 	std_logic;
-			bank_sg		: In 	std_logic;
-			rst		: In 	std_logic;
-			we_i		: In 	std_logic;
+	clkW_h		: In  	std_logic;
+	clkR_16		: In 	std_logic;
+        clr		: In 	std_logic;
+        ceS		: In 	std_logic;
+	bank_sg		: In 	std_logic;
+	rst		: In 	std_logic;
+	we_i		: In 	std_logic;
 
-			ly3_dt		: In	std_logic_vector (15 DownTo 0);
-			ad_r_dt		: In	std_logic_vector (15 DownTo 0);
-			ad_r_pt		: In	std_logic_vector (14 DownTo 0);
+	ly3_dt		: In	std_logic_vector (15 DownTo 0);
+	ad_r_dt		: In	std_logic_vector (15 DownTo 0);
+	ad_r_pt		: In	std_logic_vector (14 DownTo 0);
 
 -------------- for debug ----  romFF  ----------------
-			addr10ROM	: Out	std_logic_vector (03 DownTo 0);
+	addr10ROM	: Out	std_logic_vector (03 DownTo 0);
 ------------------------------------------------------
-			pt_out		: Out	std_logic;
-			dt_out		: Out	std_logic;
+	pt_out		: Out	std_logic;
+	dt_out		: Out	std_logic;
 
 -- writing data action check-----temp IC --------------
-			f_fg		: Out	std_logic
+	f_fg		: Out	std_logic
 -------------------------------------------------------
         );
 	end darc_IC;
