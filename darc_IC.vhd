@@ -81,11 +81,11 @@ architecture Behavioral of darc_IC is
 	 ad_outVR 		: Out 		std_logic_vector (15 DownTo 0);
          ad_outVW 		: Out 		std_logic_vector (14 DownTo 0)
         );
-    end component;
+    	end component;
 
 
-    component dp_ram0
-    port(
+    	component dp_ram0
+    	port(
          clkW 			: In  	std_logic;
          clkR 			: In  	std_logic;
          din 			: In  	std_logic;
@@ -94,10 +94,10 @@ architecture Behavioral of darc_IC is
          we 			: In  	std_logic;
          dout 			: Out 	std_logic
         );
-    end component;
+    	end component;
 
-    component dp_ram1
-    port(
+    	component dp_ram1
+    	port(
          clkW 			: In  	std_logic;
          clkR 			: In  	std_logic;
          din 			: In  	std_logic;
@@ -106,11 +106,11 @@ architecture Behavioral of darc_IC is
          we 			: In  	std_logic;
          dout 			: Out 	std_logic
         );
-    end component;
+    	end component;
 
 
-    component tmp_ram
-    port(
+    	component tmp_ram
+    	port(
          clkW 			: In  	std_logic;
          clkR 			: In  	std_logic;
          din 			: In  	std_logic;
@@ -119,10 +119,10 @@ architecture Behavioral of darc_IC is
          we 			: In  	std_logic;
          dout 			: Out 	std_logic
         );
-    end component;
+    	end component;
  
-    component pt_ram0
-    port(
+    	component pt_ram0
+    	port(
          clkW 			: In  	std_logic;
          clkR 			: In  	std_logic;
          din 			: In  	std_logic;
@@ -131,10 +131,10 @@ architecture Behavioral of darc_IC is
          we 			: In  	std_logic;
          dout 			: Out 	std_logic
         );
-    end component;
+    	end component;
 
-    component pt_ram1
-    port(
+    	component pt_ram1
+    	port(
          clkW 			: In  	std_logic;
          clkR 			: In  	std_logic;
          din 			: In  	std_logic;
@@ -143,39 +143,39 @@ architecture Behavioral of darc_IC is
          we 			: In  	std_logic;
          dout 			: Out 	std_logic
         );
-    end component;
+    	end component;
 	
-	 component ip_ram
+ 	component ip_ram
         port (
-            clkW 		: In		std_logic;
-            we 			: In		std_logic;
-            din 		: In		std_logic_vector (15 DownTo 0);
-            w_adrs 		: In		std_logic_vector (03 DownTo 0);
-            r_adrs 		: In		std_logic_vector (03 DownTo 0);
+        clkW 			: In	std_logic;
+        we 			: In	std_logic;
+        din 			: In	std_logic_vector (15 DownTo 0);
+        w_adrs 			: In	std_logic_vector (03 DownTo 0);
+        r_adrs 			: In	std_logic_vector (03 DownTo 0);
 
-            dout 		: Out		std_logic_vector (15 DownTo 0)
+        dout 			: Out	std_logic_vector (15 DownTo 0)
 				);
 	end component;
  
 	component cb4ceW
-			port (
-            clk 	: In  std_logic;
-            ce 		: In  std_logic;
-            clr 	: In  std_logic;
+	port (
+        clk 			: In  	std_logic;
+        ce 			: In  	std_logic;
+        clr 			: In  	std_logic;
 
-	    w_ed	: Out	std_logic;
-            Qn 		: Out std_logic_vector (03 DownTo 0)
-				);
+	w_ed			: Out	std_logic;
+        Qn 			: Out 	std_logic_vector (03 DownTo 0)
+	);
 	end component;
 	
 	component cb4ceR
-			port (
-            clk 	: In  std_logic;
-            ce 		: In  std_logic;
-            clr 	: In  std_logic;
+	port (
+        clk 			: In  std_logic;
+        ce 			: In  std_logic;
+        clr 			: In  std_logic;
 
-            Qn 		: Out std_logic_vector (03 DownTo 0)
-				);
+        Qn 			: Out std_logic_vector (03 DownTo 0)
+	);
 	end component;
 
     
