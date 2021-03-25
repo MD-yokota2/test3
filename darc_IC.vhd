@@ -31,11 +31,11 @@ entity darc_IC is
 	port (
 			clkW_h		: In  	std_logic;
 			clkR_16		: In 		std_logic;
-         clr 			: In 		std_logic;
-         ceS 			: In 		std_logic;
+         		clr		: In 		std_logic;
+         		ceS		: In 		std_logic;
 			bank_sg		: In 		std_logic;
-			rst			: In 		std_logic;
-			we_i			: In 		std_logic;
+			rst		: In 		std_logic;
+			we_i		: In 		std_logic;
 
 			ly3_dt		: In		std_logic_vector (15 DownTo 0);
 			ad_r_dt		: In		std_logic_vector (15 DownTo 0);
@@ -48,7 +48,7 @@ entity darc_IC is
 			dt_out		: Out		std_logic;
 
 -- writing data action check-----temp IC --------------
-			f_fg			: Out		std_logic
+			f_fg		: Out		std_logic
 -------------------------------------------------------
         );
 	end darc_IC;
@@ -57,29 +57,29 @@ architecture Behavioral of darc_IC is
 
 	component Topcnt
 	port (
-			clk 			: In 		std_logic;
+	 clk 			: In 		std_logic;
          clr 			: In 		std_logic;
          ce 			: In 		std_logic;
-         ceS			: In  	std_logic;
-			rst			: In		std_logic;
-			w_ed			: In		std_logic;
+         ceS			: In  		std_logic;
+	 rst			: In		std_logic;
+	 w_ed			: In		std_logic;
 
 
          dinH 			: In 		std_logic_vector (15 DownTo 0);
          dinV 			: In 		std_logic;
          HV_slct 		: In 		std_logic;
-         psout 		: InOut 	std_logic;
-         doutH 		: Out 	std_logic;
-         doutV 		: Out 	std_logic;
+         psout 			: InOut 	std_logic;
+         doutH 			: Out 		std_logic;
+         doutV 			: Out 		std_logic;
 
-			t_190			: Out		std_logic;
-			t_176			: Out		std_logic;
-         t_082 		: Out		std_logic;
-         t_001 		: Out		std_logic;
+ 	 t_190			: Out		std_logic;
+	 t_176			: Out		std_logic;
+         t_082 			: Out		std_logic;
+         t_001 			: Out		std_logic;
 
-			ad_outH 		: Out 	std_logic_vector (15 DownTo 0);
-			ad_outVR 	: Out 	std_logic_vector (15 DownTo 0);
-         ad_outVW 	: Out 	std_logic_vector (14 DownTo 0)
+	 ad_outH 		: Out 		std_logic_vector (15 DownTo 0);
+	 ad_outVR 		: Out 		std_logic_vector (15 DownTo 0);
+         ad_outVW 		: Out 		std_logic_vector (14 DownTo 0)
         );
     end component;
 
@@ -148,10 +148,10 @@ architecture Behavioral of darc_IC is
 	 component ip_ram
         port (
             clkW 		: In		std_logic;
-            we 		: In		std_logic;
+            we 			: In		std_logic;
             din 		: In		std_logic_vector (15 DownTo 0);
-            w_adrs 	: In		std_logic_vector (03 DownTo 0);
-            r_adrs 	: In		std_logic_vector (03 DownTo 0);
+            w_adrs 		: In		std_logic_vector (03 DownTo 0);
+            r_adrs 		: In		std_logic_vector (03 DownTo 0);
 
             dout 		: Out		std_logic_vector (15 DownTo 0)
 				);
@@ -159,20 +159,20 @@ architecture Behavioral of darc_IC is
  
 	component cb4ceW
 			port (
-            clk 		: In  std_logic;
+            clk 	: In  std_logic;
             ce 		: In  std_logic;
-            clr 		: In  std_logic;
+            clr 	: In  std_logic;
 
-				w_ed		: Out	std_logic;
+	    w_ed	: Out	std_logic;
             Qn 		: Out std_logic_vector (03 DownTo 0)
 				);
 	end component;
 	
 	component cb4ceR
 			port (
-            clk 		: In  std_logic;
+            clk 	: In  std_logic;
             ce 		: In  std_logic;
-            clr 		: In  std_logic;
+            clr 	: In  std_logic;
 
             Qn 		: Out std_logic_vector (03 DownTo 0)
 				);
@@ -182,24 +182,24 @@ architecture Behavioral of darc_IC is
 signal 	clkW_hi		: 			std_logic := '0';
   
 
-signal	dinH 			: 			std_logic_vector (15 DownTo 0);
-signal 	dinV 			: 			std_logic := '0';
+signal	dinH 		: 			std_logic_vector (15 DownTo 0);
+signal 	dinV 		: 			std_logic := '0';
 signal 	psout 		: 			std_logic := '0';
-signal 	doutH_dt		: 			std_logic := '0';
-signal 	doutV_pt		: 			std_logic := '0';
+signal 	doutH_dt	: 			std_logic := '0';
+signal 	doutV_pt	: 			std_logic := '0';
 
 signal 	ad_outH_dt	: 			std_logic_vector (15 DownTo 0) :=x"0000";
 signal 	ad_outVR_dt	: 			std_logic_vector (15 DownTo 0) :=x"0000";
 signal 	ad_outVW_pt	: 			std_logic_vector (14 DownTo 0) :=b"000000000000000";
 
 
-signal 	dout0			: 			std_logic := '0';
-signal 	dout1			: 			std_logic := '0';
+signal 	dout0		: 			std_logic := '0';
+signal 	dout1		: 			std_logic := '0';
 
-signal 	pout0			: 			std_logic := '0';
-signal 	pout1			: 			std_logic := '0';
+signal 	pout0		: 			std_logic := '0';
+signal 	pout1		: 			std_logic := '0';
 
-signal 	ce				: 			std_logic := '0';
+signal 	ce		: 			std_logic := '0';
 
 signal 	restart		: 			std_logic := '0';
 signal 	clr_rst		: 			std_logic := '0';
@@ -217,16 +217,16 @@ signal 	we_dram1 	: 			std_logic := '0';
 signal 	we_pram0 	: 			std_logic := '0';
 signal 	we_pram1 	: 			std_logic := '0';
 
-signal 	HV_slct 		: 			std_logic := '0';
+signal 	HV_slct		: 			std_logic := '0';
 
-signal	w_ok			: 			std_logic := '0';
---signal 	we_i	 		: 			std_logic := '0';
+signal	w_ok		: 			std_logic := '0';
+--signal 	we_i	: 			std_logic := '0';
 signal 	addrW10		: 			std_logic_vector (03 DownTo 0) :=b"0000";
 signal 	addrR10		: 			std_logic_vector (03 DownTo 0) :=b"0000";
 
 
 -- writing data action check-----temp IC --------------
-signal 	fn_flag 		: 			std_logic := '0';
+signal 	fn_flag 	: 			std_logic := '0';
 -------------------------------------------------------
 
 begin
@@ -345,19 +345,19 @@ hnofpac:	process (clkW_hi,clr)
 					dinH 		=> dinH,
 					dinV 		=> dinV,
 					HV_slct 	=> HV_slct,
-					psout 	=> psout,
-					doutH 	=> doutH_dt,
-					doutV 	=> doutV_pt,
+					psout 		=> psout,
+					doutH 		=> doutH_dt,
+					doutV 		=> doutV_pt,
 
-					t_190 	=> tout_190,
-					t_082 	=> tout_082,
-					t_176 	=> tout_176,
-					t_001 	=> tout_001,
+					t_190 		=> tout_190,
+					t_082 		=> tout_082,
+					t_176 		=> tout_176,
+					t_001 		=> tout_001,
 
 					
 					ad_outH 	=> ad_outH_dt,
-					ad_outVR => ad_outVR_dt,
-					ad_outVW => ad_outVW_pt
+					ad_outVR 	=> ad_outVR_dt,
+					ad_outVW 	=> ad_outVW_pt
         );
 
 
@@ -366,8 +366,8 @@ hnofpac:	process (clkW_hi,clr)
 					clkW 		=> clkW_hi,				--Write clock High speed 
 					clkR 		=> clkR_16,				--Read  clock DARC 16kHz bps
 					din 		=> doutH_dt,
-					w_adrs 	=> ad_outH_dt,
-					r_adrs 	=> ad_r_dt,
+					w_adrs 		=> ad_outH_dt,
+					r_adrs 		=> ad_r_dt,
 					we 		=> we_dram0,
 					dout 		=> dout0
         );
@@ -377,8 +377,8 @@ hnofpac:	process (clkW_hi,clr)
 					clkW 		=> clkW_hi,				--Write clock High speed 
 					clkR 		=> clkR_16,				--Read  clock DARC 16kHz bps
 					din 		=> doutH_dt,
-					w_adrs 	=> ad_outH_dt,
-					r_adrs 	=> ad_r_dt,
+					w_adrs 		=> ad_outH_dt,
+					r_adrs 		=> ad_r_dt,
 					we 		=> we_dram1,
 					dout 		=> dout1
         );
@@ -388,8 +388,8 @@ hnofpac:	process (clkW_hi,clr)
 					clkW 		=> clkW_hi,				--Write clock High speed 
 					clkR 		=> clkW_hi,				--Read  clock DARC 16kHz bps
 					din 		=> doutH_dt,
-					w_adrs 	=> ad_outH_dt,
-					r_adrs 	=> ad_outVR_dt,
+					w_adrs 		=> ad_outH_dt,
+					r_adrs 		=> ad_outVR_dt,
 					we 		=> tout_272,
 					dout 		=> dinV
         );
@@ -399,8 +399,8 @@ hnofpac:	process (clkW_hi,clr)
 					clkW 		=> clkW_hi,				--Write clock High speed 
 					clkR 		=> clkR_16,				--Read  clock DARC 16kHz bps
 					din 		=> doutV_pt,
-					w_adrs 	=> ad_outVW_pt,
-					r_adrs 	=> ad_r_pt,
+					w_adrs 		=> ad_outVW_pt,
+					r_adrs 		=> ad_r_pt,
 					we 		=> we_pram0,
 					dout 		=> pout0
         );
@@ -410,8 +410,8 @@ hnofpac:	process (clkW_hi,clr)
 					clkW 		=> clkW_hi,				--Write clock High speed 
 					clkR 		=> clkR_16,				--Read  clock DARC 16kHz bps
 					din 		=> doutV_pt,
-					w_adrs 	=> ad_outVW_pt,
-					r_adrs 	=> ad_r_pt,
+					w_adrs 		=> ad_outVW_pt,
+					r_adrs 		=> ad_r_pt,
 					we 		=> we_pram1,
 					dout 		=> pout1
         );
@@ -422,8 +422,8 @@ hnofpac:	process (clkW_hi,clr)
 		port map (
 					clkW 		=> clkW_hi,
 					din 		=> ly3_dt,
-					w_adrs 	=> addrW10,
-					r_adrs 	=> addrR10,
+					w_adrs 		=> addrW10,
+					r_adrs 		=> addrR10,
 					we 		=> we_i,
 					dout 		=> dinH
 			);
